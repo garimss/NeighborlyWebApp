@@ -21,6 +21,17 @@ variables:
 
   # Project root folder. Point to the folder containing manage.py file.
   projectRoot: $(System.DefaultWorkingDirectory)
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Azure for Students (f0087ea9-5776-46d6-99b0-6b3f63f86da8)'
+    appType: 'webAppLinux'
+    appName: 'Neighborlywebapplication'
+    deployToSlotOrASE: true
+    resourceGroupName: 'Coud-nanodegree'
+    slotName: 'production'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    runtimeStack: 'PYTHON|3.8'
+    startUpCommand: 'app.py'
 
   # Python version: 3.7
   pythonVersion: '3.7'
